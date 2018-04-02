@@ -1,0 +1,6 @@
+#ifndef LWRPSHADRES_SHADERLIBRARY_LIGHTING
+#define LWRPSHADRES_SHADERLIBRARY_LIGHTING
+
+#include "LWRP/ShaderLibrary/Lighting.hlsl"
+
+#endif
