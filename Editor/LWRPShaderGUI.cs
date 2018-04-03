@@ -7,7 +7,7 @@ namespace LWRPShaders
 {
     public class LWRPShaderGUI : ShaderGUI
     {
-        private enum Surface
+        public enum Surface
         {
             Opaque,
             Transparent,
@@ -169,7 +169,7 @@ namespace LWRPShaders
             editor.ShaderProperty(r, property, property.displayName);
         }
 
-        private void ApplyMaterialChange(Material m)
+        public static void ApplyMaterialChange(Material m)
         {
             m.shaderKeywords = null;
 
@@ -221,13 +221,13 @@ namespace LWRPShaders
             ApplyMaterialKeyword(m, "_AlphaPremultiply", "_ALPHAPREMULTIPLY_ON");
             ApplyMaterialKeyword(m, "_AlphaClip", "_ALPHACLIP_ON");
 
-            if (EnablePerInstanceDataProperty != null)
+            if (m.HasProperty("_EnablePerInstanceData"))
             {
                 ApplyMaterialKeyword(m, "_EnablePerInstanceData", "_PERINSTANCEDATA_ON");
             }
         }
 
-        private void ApplyMaterialKeyword(Material m, string propName, string keywordName)
+        private static void ApplyMaterialKeyword(Material m, string propName, string keywordName)
         {
             if (m.GetFloat(propName) > 0f)
             {
