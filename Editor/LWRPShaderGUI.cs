@@ -202,7 +202,7 @@ namespace LWRPShaders
                     break;
                 case Surface.Additive:
                     m.SetOverrideTag("RenderType", "Transparent");
-                    m.SetInt("_SrcBlend", (int) BlendMode.One);
+                    m.SetInt("_SrcBlend", (int) BlendMode.SrcAlpha);
                     m.SetInt("_DstBlend", (int) BlendMode.One);
                     m.SetInt("_ZWrite", 0);
                     m.SetInt("_AlphaPremultiply", 0);
