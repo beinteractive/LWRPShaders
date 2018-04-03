@@ -18,6 +18,11 @@ struct appdata
     float3 vertex : POSITION;
     float3 normal : NORMAL;
     float2 uv : TEXCOORD0;
+    
+    #ifdef USE_VERTEX_COLOR
+    half4 color : COLOR;
+    #endif
+    
     UNITY_VERTEX_INPUT_INSTANCE_ID
 };
 

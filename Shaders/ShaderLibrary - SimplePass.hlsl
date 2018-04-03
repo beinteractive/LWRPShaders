@@ -9,6 +9,10 @@ struct v2f
     float2 uv : TEXCOORD0;
     #endif
     
+    #ifdef USE_VERTEX_COLOR
+    half4 color : COLOR;
+    #endif
+    
     #ifdef _PERINSTANCEDATA_ON
     UNITY_VERTEX_INPUT_INSTANCE_ID
     #endif
@@ -32,6 +36,13 @@ v2f vert_simple(appdata v)
     #else
     o.uv = v.uv;
     #endif
+    #endif
+    
+    #ifdef USE_VERTEX_COLOR
+    #ifdef UNITY_PARTICLE_INSTANCING_ENABLED
+    VertInstancingColor(v.color);
+    #endif
+    o.color = v.color;
     #endif
     
     return o;

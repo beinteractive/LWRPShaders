@@ -61,8 +61,13 @@ namespace LWRPShaders
                 EditorGUILayout.Space();
 
                 editor.RenderQueueField();
-                editor.EnableInstancingField();
-                Property(editor, EnablePerInstanceDataProperty);
+
+                if (EnablePerInstanceDataProperty != null)
+                {
+                    editor.EnableInstancingField();
+                    Property(editor, EnablePerInstanceDataProperty);
+                }
+                
                 editor.DoubleSidedGIField();
             }
             if (EditorGUI.EndChangeCheck())
@@ -85,7 +90,7 @@ namespace LWRPShaders
             AlphaPremultiplyProperty = FindProperty("_AlphaPremultiply", props);
             AlphaClipProperty = FindProperty("_AlphaClip", props);
             AlphaCutoffProperty = FindProperty("_Cutoff", props);
-            EnablePerInstanceDataProperty = FindProperty("_EnablePerInstanceData", props);
+            EnablePerInstanceDataProperty = FindProperty("_EnablePerInstanceData", props, false);
         }
 
         private void BasicProperties(MaterialEditor editor, MaterialProperty[] props)
@@ -215,7 +220,11 @@ namespace LWRPShaders
 
             ApplyMaterialKeyword(m, "_AlphaPremultiply", "_ALPHAPREMULTIPLY_ON");
             ApplyMaterialKeyword(m, "_AlphaClip", "_ALPHACLIP_ON");
-            ApplyMaterialKeyword(m, "_EnablePerInstanceData", "_PERINSTANCEDATA_ON");
+
+            if (EnablePerInstanceDataProperty != null)
+            {
+                ApplyMaterialKeyword(m, "_EnablePerInstanceData", "_PERINSTANCEDATA_ON");
+            }
         }
 
         private void ApplyMaterialKeyword(Material m, string propName, string keywordName)
