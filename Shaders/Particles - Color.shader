@@ -16,7 +16,7 @@ Shader "Lightweight/Particles/Color"
     }
     SubShader
     {
-        Tags { "RenderType" = "Opaque" "RenderPipeline" = "LightweightPipeline" "IgnoreProjector" = "True" }
+        Tags { "RenderType" = "Opaque" "RenderPipeline" = "LightweightPipeline" "IgnoreProjector" = "True" "PreviewType" = "Plane" }
         Pass
         {
             Tags { "LightMode" = "LightweightForward" }

@@ -18,7 +18,7 @@ Shader "Lightweight/Unlit/Gradient"
     }
     SubShader
     {
-        Tags { "RenderType" = "Opaque" "RenderPipeline" = "LightweightPipeline" "IgnoreProjector" = "True" }
+        Tags { "RenderType" = "Opaque" "RenderPipeline" = "LightweightPipeline" "IgnoreProjector" = "True" "PreviewType" = "Plane" }
         Pass
         {
             Tags { "LightMode" = "LightweightForward" }
