@@ -52,25 +52,35 @@ namespace LWRPShaders
 
             EditorGUILayout.Space();
             EditorGUILayout.Space();
-            
+
+            var hasModified = false;            
+
             EditorGUI.BeginChangeCheck();
             {
                 AdvancedProperties(editor, props);
 
                 EditorGUILayout.Space();
                 EditorGUILayout.Space();
+            }
 
-                editor.RenderQueueField();
+            hasModified = EditorGUI.EndChangeCheck();
 
+            editor.RenderQueueField();
+
+            EditorGUI.BeginChangeCheck();
+            {
                 if (EnablePerInstanceDataProperty != null)
                 {
                     editor.EnableInstancingField();
                     Property(editor, EnablePerInstanceDataProperty);
                 }
-                
-                editor.DoubleSidedGIField();
             }
-            if (EditorGUI.EndChangeCheck())
+
+            hasModified = EditorGUI.EndChangeCheck() || hasModified;
+            
+            editor.DoubleSidedGIField();
+            
+            if (hasModified)
             {
                 foreach (var target in SurfaceProperty.targets)
                 {
