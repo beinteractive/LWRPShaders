@@ -14,6 +14,7 @@ Shader "Lightweight/Particles/Texture"
         [HideInInspector] [Toggle] _ZWrite ("Z Write", Float) = 1.0
         [HideInInspector] [Toggle] _AlphaPremultiply ("Premultiplied Alpha", Float) = 0.0
         [HideInInspector] [Toggle] _AlphaClip ("Alpha Clip", Float) = 0.0
+        [HideInInspector] [Toggle] _ControlAlphaClipByVertexColor ("Control by Particle Alpha", Float) = 0.0
     }
     SubShader
     {
@@ -35,6 +36,7 @@ Shader "Lightweight/Particles/Texture"
             #pragma instancing_options procedural:VertInstancingSetup
             #pragma shader_feature _ALPHAPREMULTIPLY_ON
             #pragma shader_feature _ALPHACLIP_ON
+            #pragma shader_feature _CONTROL_ALPHA_CLIP_BY_VERTEX_COLOR_ON
             
             #pragma vertex vert_simple
             #pragma fragment frag
@@ -56,8 +58,17 @@ Shader "Lightweight/Particles/Texture"
                 half4 vcol = i.color;
                 half4 col = _Color;
                 half3 albedo = tex.rgb * vcol.rgb * col.rgb;
-                half a = tex.a * vcol.a * col.a;
+                half a = tex.a * col.a;
+                #ifdef _ALPHACLIP_ON
+                #ifdef _CONTROL_ALPHA_CLIP_BY_VERTEX_COLOR_ON
+                clip(a - PERINSTANCEDATA_REF(_Cutoff) * vcol.a)
+                #else
+                a *= vcol.a;
                 AlphaClip(a);
+                #endif
+                #else
+                a *= vcol.a;
+                #endif
                 AlphaPremultiply(albedo, a);
                 return half4(albedo, a);
             }

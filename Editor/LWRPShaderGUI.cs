@@ -32,6 +32,7 @@ namespace LWRPShaders
         private MaterialProperty AlphaPremultiplyProperty;
         private MaterialProperty AlphaClipProperty;
         private MaterialProperty AlphaCutoffProperty;
+        private MaterialProperty ControlAlphaClipByVertexColorProperty;
         private MaterialProperty EnablePerInstanceDataProperty;
 
         private bool IsFirstTimeApply = true;
@@ -100,6 +101,7 @@ namespace LWRPShaders
             AlphaPremultiplyProperty = FindProperty("_AlphaPremultiply", props);
             AlphaClipProperty = FindProperty("_AlphaClip", props);
             AlphaCutoffProperty = FindProperty("_Cutoff", props);
+            ControlAlphaClipByVertexColorProperty = FindProperty("_ControlAlphaClipByVertexColor", props, false);
             EnablePerInstanceDataProperty = FindProperty("_EnablePerInstanceData", props, false);
         }
 
@@ -128,6 +130,11 @@ namespace LWRPShaders
             EditorGUI.indentLevel++;
             {
                 Property(editor, AlphaCutoffProperty);
+
+                if (ControlAlphaClipByVertexColorProperty != null)
+                {
+                    Property(editor, ControlAlphaClipByVertexColorProperty);
+                }
             }
             EditorGUI.indentLevel--;
             EditorGUI.EndDisabledGroup();
@@ -230,6 +237,11 @@ namespace LWRPShaders
 
             ApplyMaterialKeyword(m, "_AlphaPremultiply", "_ALPHAPREMULTIPLY_ON");
             ApplyMaterialKeyword(m, "_AlphaClip", "_ALPHACLIP_ON");
+
+            if (m.HasProperty("_ControlAlphaClipByVertexColor"))
+            {
+                ApplyMaterialKeyword(m, "_ControlAlphaClipByVertexColor", "_CONTROL_ALPHA_CLIP_BY_VERTEX_COLOR_ON");
+            }
 
             if (m.HasProperty("_EnablePerInstanceData"))
             {
