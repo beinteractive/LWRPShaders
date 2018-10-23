@@ -3,7 +3,7 @@ Shader "Lightweight/Particles/Texture"
     Properties
     {
         _MainTex ("Base (RGB) Alpha (A)", 2D) = "white" {}
-        _Color ("Color", Color) = (1, 1, 1, 1)
+        [HDR] _Color ("Color", Color) = (1, 1, 1, 1)
         _Cutoff ("Threshold", Range(0.0, 1.0)) = 0.5
         
         [HideInInspector] _Surface ("Surface", Float) = 0.0
