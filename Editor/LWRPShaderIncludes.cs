@@ -7,7 +7,9 @@ namespace LWRPShaders
 {
     public static class LWRPShaderIncludes
     {
+#pragma warning disable 618
         [ShaderIncludePath]
+#pragma warning restore 618
         public static string[] GetPaths()
         {
             var root = Directory.GetParent(Application.dataPath);
