@@ -1,7 +1,7 @@
 #ifndef LWRPSHADRES_SHADERLIBRARY_INSTANCING
 #define LWRPSHADRES_SHADERLIBRARY_INSTANCING
 
-#include "CoreRP/ShaderLibrary/UnityInstancing.hlsl"
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/UnityInstancing.hlsl"
 
 #define INSTANCING_PROPS_BEGIN UNITY_INSTANCING_BUFFER_START(Props)
 #define INSTANCING_PROPS_END UNITY_INSTANCING_BUFFER_END(Props)

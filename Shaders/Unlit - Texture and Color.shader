@@ -40,10 +40,10 @@ Shader "Lightweight/Unlit/Texture and Color"
             #pragma vertex vert_simple
             #pragma fragment frag
             
-            #include "ShaderLibrary - Input.hlsl"
-            #include "ShaderLibrary - Instancing.hlsl"
-            #include "ShaderLibrary - AlphaClip.hlsl"
-            #include "ShaderLibrary - SimplePass.hlsl"
+            #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - Input.hlsl"
+            #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - Instancing.hlsl"
+            #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - AlphaClip.hlsl"
+            #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - SimplePass.hlsl"
             
             PERINSTANCEDATA_BEGIN
               PERINSTANCEDATA(half4, _Color)

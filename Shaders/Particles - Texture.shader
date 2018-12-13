@@ -43,11 +43,11 @@ Shader "Lightweight/Particles/Texture"
             
             #define USE_VERTEX_COLOR
             
-            #include "ShaderLibrary - Input.hlsl"
-            #include "ShaderLibrary - Instancing.hlsl"
-            #include "ShaderLibrary - Particles.hlsl"
-            #include "ShaderLibrary - AlphaClip.hlsl"
-            #include "ShaderLibrary - SimplePass.hlsl"
+            #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - Input.hlsl"
+            #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - Instancing.hlsl"
+            #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - Particles.hlsl"
+            #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - AlphaClip.hlsl"
+            #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - SimplePass.hlsl"
             
             half4 _Color;
             DEFINE_CUTOFF

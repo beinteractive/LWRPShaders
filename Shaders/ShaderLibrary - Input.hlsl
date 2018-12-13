@@ -1,7 +1,7 @@
 #ifndef LWRPSHADRES_SHADERLIBRARY_INPUT
 #define LWRPSHADRES_SHADERLIBRARY_INPUT
 
-#include "LWRP/ShaderLibrary/Core.hlsl"
+#include "Packages/com.unity.render-pipelines.lightweight/ShaderLibrary/Core.hlsl"
 
 #ifndef NO_MAIN_TEXTURE
 

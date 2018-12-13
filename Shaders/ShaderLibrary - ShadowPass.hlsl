@@ -7,6 +7,6 @@
 
 #endif
 
-#include "LWRP/ShaderLibrary/LightweightPassShadow.hlsl"
+#include "Packages/com.unity.render-pipelines.lightweight/Shaders/ShadowCasterPass.hlsl"
 
 #endif

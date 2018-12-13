@@ -7,6 +7,6 @@
 
 #endif
 
-#include "LWRP/ShaderLibrary/LightweightPassDepthOnly.hlsl"
+#include "Packages/com.unity.render-pipelines.lightweight/Shaders/DepthOnlyPass.hlsl"
 
 #endif
