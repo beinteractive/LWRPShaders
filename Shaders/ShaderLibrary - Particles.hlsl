@@ -65,6 +65,7 @@ void VertInstancingColor(inout half4 color)
     UNITY_PARTICLE_INSTANCE_DATA data = unity_ParticleInstanceData[unity_InstanceID];
     color = lerp(half4(1.0f, 1.0f, 1.0f, 1.0f), color, unity_ParticleUseMeshColors);
     color *= float4(data.color & 255, (data.color >> 8) & 255, (data.color >> 16) & 255, (data.color >> 24) & 255) * (1.0f / 255);
+    color = saturate(color);
 #endif
 }
 
