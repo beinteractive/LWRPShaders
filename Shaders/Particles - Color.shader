@@ -2,7 +2,7 @@ Shader "Lightweight/Particles/Color"
 {
     Properties
     {
-        [HDR] _Color ("Color", Color) = (1, 1, 1, 1)
+        [HDR] _BaseColor ("Base Color", Color) = (1, 1, 1, 1)
         _Cutoff ("Threshold", Range(0.0, 1.0)) = 0.5
         
         [HideInInspector] _Surface ("Surface", Float) = 0.0
@@ -48,13 +48,13 @@ Shader "Lightweight/Particles/Color"
             #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - AlphaClip.hlsl"
             #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - SimplePass.hlsl"
             
-            half4 _Color;
+            half4 _BaseColor;
             DEFINE_CUTOFF
         
             half4 frag(v2f i) : SV_Target
             {
                 half4 vcol = i.color;
-                half4 col = _Color;
+                half4 col = _BaseColor;
                 half3 albedo = vcol.rgb * col.rgb;
                 half a = vcol.a * col.a;
                 AlphaClip(a);

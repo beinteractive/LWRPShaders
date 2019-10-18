@@ -2,7 +2,7 @@ Shader "Lightweight/Unlit/Texture"
 {
     Properties
     {
-        _MainTex ("Base (RGB) Alpha (A)", 2D) = "white" {}
+        _BaseMap ("Base Map (RGB) Alpha (A)", 2D) = "white" {}
         _Cutoff ("Threshold", Range(0.0, 1.0)) = 0.5
         
         [HideInInspector] _Surface ("Surface", Float) = 0.0

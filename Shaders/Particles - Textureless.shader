@@ -2,7 +2,7 @@ Shader "Lightweight/Particles/Textureless"
 {
     Properties
     {
-        _Color ("Color", Color) = (1, 1, 1, 1)
+        _BaseColor ("Base Color", Color) = (1, 1, 1, 1)
         _Cutoff ("Threshold", Range(0.0, 1.0)) = 0.5
         
         [KeywordEnum(Hyperbolic, Power, SmoothStep)] _CurveType("Curve Type", Float) = 0.0
@@ -51,7 +51,7 @@ Shader "Lightweight/Particles/Textureless"
             #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - AlphaClip.hlsl"
             #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - SimplePass.hlsl"
             
-            half4 _Color;
+            half4 _BaseColor;
             DEFINE_CUTOFF
             half _Shape;
         
@@ -72,7 +72,7 @@ Shader "Lightweight/Particles/Textureless"
                 #endif
                 
                 half4 vcol = i.color;
-                half4 col = _Color;
+                half4 col = _BaseColor;
                 half3 albedo = vcol.rgb * col.rgb;
                 half a = vcol.a * col.a * x;
                 AlphaClip(a);

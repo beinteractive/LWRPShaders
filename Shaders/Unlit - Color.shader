@@ -2,7 +2,7 @@ Shader "Lightweight/Unlit/Color"
 {
     Properties
     {
-        _Color ("Color", Color) = (1, 1, 1, 1)
+        _BaseColor ("Base Color", Color) = (1, 1, 1, 1)
         _Cutoff ("Threshold", Range(0.0, 1.0)) = 0.5
         
         [HideInInspector] _Surface ("Surface", Float) = 0.0
@@ -48,14 +48,14 @@ Shader "Lightweight/Unlit/Color"
             #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - SimplePass.hlsl"
             
             PERINSTANCEDATA_BEGIN
-              PERINSTANCEDATA(half4, _Color)
+              PERINSTANCEDATA(half4, _BaseColor)
               PERINSTANCEDATA_CUTOFF
             PERINSTANCEDATA_END
         
             half4 frag(v2f i) : SV_Target
             {
                 SETUP_PER_INSTANCE_ID(i)
-                half4 col = PERINSTANCEDATA_REF(_Color);
+                half4 col = PERINSTANCEDATA_REF(_BaseColor);
                 half3 albedo = col.rgb;
                 half a = col.a;
                 AlphaClip(a);

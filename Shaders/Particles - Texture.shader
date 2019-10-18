@@ -2,8 +2,8 @@ Shader "Lightweight/Particles/Texture"
 {
     Properties
     {
-        _MainTex ("Base (RGB) Alpha (A)", 2D) = "white" {}
-        [HDR] _Color ("Color", Color) = (1, 1, 1, 1)
+        _BaseMap ("Base Map (RGB) Alpha (A)", 2D) = "white" {}
+        [HDR] _BaseColor ("Base Color", Color) = (1, 1, 1, 1)
         _Cutoff ("Threshold", Range(0.0, 1.0)) = 0.5
         
         [HideInInspector] _Surface ("Surface", Float) = 0.0
@@ -49,14 +49,14 @@ Shader "Lightweight/Particles/Texture"
             #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - AlphaClip.hlsl"
             #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - SimplePass.hlsl"
             
-            half4 _Color;
+            half4 _BaseColor;
             DEFINE_CUTOFF
         
             half4 frag(v2f i) : SV_Target
             {
                 half4 tex = MainTexture(i.uv);
                 half4 vcol = i.color;
-                half4 col = _Color;
+                half4 col = _BaseColor;
                 half3 albedo = tex.rgb * vcol.rgb * col.rgb;
                 half a = tex.a * col.a;
                 #ifdef _ALPHACLIP_ON

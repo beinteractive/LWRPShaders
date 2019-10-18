@@ -2,8 +2,8 @@ Shader "Lightweight/Unlit/Gradient"
 {
     Properties
     {
-        _ColorA ("Color A", Color) = (1, 1, 1, 1)
-        _ColorB ("Color B", Color) = (1, 1, 1, 1)
+        _BaseColorA ("Base Color A", Color) = (1, 1, 1, 1)
+        _BaseColorB ("Base Color B", Color) = (1, 1, 1, 1)
         _Cutoff ("Threshold", Range(0.0, 1.0)) = 0.5
         
         [HideInInspector] _Surface ("Surface", Float) = 0.0
@@ -48,16 +48,16 @@ Shader "Lightweight/Unlit/Gradient"
             #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - SimplePass.hlsl"
             
             PERINSTANCEDATA_BEGIN
-              PERINSTANCEDATA(half4, _ColorA)
-              PERINSTANCEDATA(half4, _ColorB)
+              PERINSTANCEDATA(half4, _BaseColorA)
+              PERINSTANCEDATA(half4, _BaseColorB)
               PERINSTANCEDATA_CUTOFF
             PERINSTANCEDATA_END
         
             half4 frag(v2f i) : SV_Target
             {
                 SETUP_PER_INSTANCE_ID(i)
-                half4 col_a = PERINSTANCEDATA_REF(_ColorA);
-                half4 col_b = PERINSTANCEDATA_REF(_ColorB);
+                half4 col_a = PERINSTANCEDATA_REF(_BaseColorA);
+                half4 col_b = PERINSTANCEDATA_REF(_BaseColorB);
                 half3 albedo_a = col_a.rgb;
                 half3 albedo_b = col_b.rgb;
                 half a_a = col_a.a;

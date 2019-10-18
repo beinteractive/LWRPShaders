@@ -2,8 +2,8 @@ Shader "Lightweight/Unlit/Texture and Color"
 {
     Properties
     {
-        _MainTex ("Base (RGB) Alpha (A)", 2D) = "white" {}
-        _Color ("Color", Color) = (1, 1, 1, 1)
+        _BaseMap ("Base Map (RGB) Alpha (A)", 2D) = "white" {}
+        _BaseColor ("Base Color", Color) = (1, 1, 1, 1)
         _Cutoff ("Threshold", Range(0.0, 1.0)) = 0.5
         
         [HideInInspector] _Surface ("Surface", Float) = 0.0
@@ -46,7 +46,7 @@ Shader "Lightweight/Unlit/Texture and Color"
             #include "Packages/jp.beinteractive.lwrpshaders/Shaders/ShaderLibrary - SimplePass.hlsl"
             
             PERINSTANCEDATA_BEGIN
-              PERINSTANCEDATA(half4, _Color)
+              PERINSTANCEDATA(half4, _BaseColor)
               PERINSTANCEDATA_CUTOFF
             PERINSTANCEDATA_END
         
@@ -54,7 +54,7 @@ Shader "Lightweight/Unlit/Texture and Color"
             {
                 SETUP_PER_INSTANCE_ID(i)
                 half4 tex = MainTexture(i.uv);
-                half4 col = PERINSTANCEDATA_REF(_Color);
+                half4 col = PERINSTANCEDATA_REF(_BaseColor);
                 half3 albedo = tex.rgb * col.rgb;
                 half a = tex.a * col.a;
                 AlphaClip(a);

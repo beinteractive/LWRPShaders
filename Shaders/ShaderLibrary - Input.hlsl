@@ -6,10 +6,10 @@
 #ifndef NO_MAIN_TEXTURE
 
 CBUFFER_START(UnityPerMaterial)
-float4 _MainTex_ST;
+float4 _BaseMap_ST;
 CBUFFER_END
 
-TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
+TEXTURE2D(_BaseMap); SAMPLER(sampler_BaseMap);
 
 #endif
 
@@ -30,12 +30,12 @@ struct appdata
 
 float2 TransformMainTextureCoord(float2 uv)
 {
-    return TRANSFORM_TEX(uv, _MainTex);
+    return TRANSFORM_TEX(uv, _BaseMap);
 }
 
 half4 MainTexture(float2 uv)
 {
-    return SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv);
+    return SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, uv);
 }
 
 #endif
