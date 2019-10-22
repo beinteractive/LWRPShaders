@@ -7,6 +7,10 @@
 
 #endif
 
+#if UNITY_VERSION >= 201930
 #include "Packages/com.unity.render-pipelines.universal/Shaders/ShadowCasterPass.hlsl"
+#else
+#include "Packages/com.unity.render-pipelines.lightweight/Shaders/ShadowCasterPass.hlsl"
+#endif
 
 #endif
