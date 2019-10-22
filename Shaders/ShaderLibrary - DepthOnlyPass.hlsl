@@ -7,6 +7,10 @@
 
 #endif
 
+#if UNITY_VERSION >= 201930
 #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
+#else
+#include "Packages/com.unity.render-pipelines.lightweight/Shaders/DepthOnlyPass.hlsl"
+#endif
 
 #endif

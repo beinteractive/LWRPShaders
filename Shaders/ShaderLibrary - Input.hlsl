@@ -1,7 +1,11 @@
 #ifndef LWRPSHADRES_SHADERLIBRARY_INPUT
 #define LWRPSHADRES_SHADERLIBRARY_INPUT
 
+#if UNITY_VERSION >= 201930
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+#else
+#include "Packages/com.unity.render-pipelines.lightweight/ShaderLibrary/Core.hlsl"
+#endif
 
 #ifndef NO_MAIN_TEXTURE
 
