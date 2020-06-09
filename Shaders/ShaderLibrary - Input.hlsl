@@ -2,6 +2,7 @@
 #define LWRPSHADRES_SHADERLIBRARY_INPUT
 
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
 
 #ifndef NO_MAIN_TEXTURE
 
